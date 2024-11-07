@@ -5,6 +5,8 @@ import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
 
+export const createUser = () => {} // Implement the createUser function
+
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();
   const user = await db.get<PlatformUser>('SELECT * FROM users WHERE id = ?', id);
@@ -12,7 +14,7 @@ export const findUserById = async (id: string): Promise<PlatformUser | null> => 
   return user || null;
 };
 
-// this function might be useful for us in the future. You can disregard it for the register function for now.
+// The function below might be useful for task 2. You can disregard it for the register function for task 1.
 /**
  * Compares a plain text password with a hashed password.
  *

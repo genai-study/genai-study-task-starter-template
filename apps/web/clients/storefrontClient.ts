@@ -9,3 +9,7 @@ export const storefrontClient = createStorefrontClient({
   storefrontAccessToken: env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || "",
   adminAccessToken: env.SHOPIFY_ADMIN_ACCESS_TOKEN || "",
 })
+
+/**
+ * THIS FILE IS NOT NEEDED ANYMORE. WE WILL DELETE IT COMPLETELY.
+ */

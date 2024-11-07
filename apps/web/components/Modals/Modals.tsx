@@ -5,7 +5,7 @@ import React from "react"
 import { type Modal, useModalStore } from "stores/modalStore"
 
 const LoginModal = dynamic(() => import("./LoginModal").then((m) => m.LoginModal), { loading: Placeholder })
-const SignupModal = dynamic(() => import("./SignupModal").then((m) => m.SignupModal), { loading: Placeholder })
+const RegisterModal = dynamic(() => import("./RegisterModal").then((m) => m.RegisterModal), { loading: Placeholder })
 const SearchModal = dynamic(() => import("./SearchModal").then((m) => m.SearchModal), { loading: Placeholder })
 
 export function Modals() {
@@ -25,7 +25,7 @@ function ModalsFactory({ type }: { type: Modal }) {
     case "login":
       return <LoginModal />
     case "signup":
-      return <SignupModal />
+      return <RegisterModal />
     case "search":
       return <SearchModal />
     default:

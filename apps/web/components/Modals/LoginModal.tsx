@@ -86,7 +86,7 @@ export function LoginModal() {
           disabled={form.formState.isSubmitting}
           isLoading={form.formState.isSubmitting}
         >
-          Submit
+          Login
         </Button>
       </DialogFooter>
     </GenericModal>

@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
-import { getCurrentUser, signupUser } from "app/actions/user.actions"
+import { getCurrentUser, registerUser } from "app/actions/user.actions"
 import { Button } from "components/Button/Button"
 import { DialogFooter } from "components/Dialog/Dialog"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "components/Form/Form"
@@ -24,7 +24,7 @@ const formFields = [
   { label: "Password", name: "password", type: "password", placeholder: "Enter password..." },
 ] as const
 
-export function SignupModal() {
+export function RegisterModal() {
   const modals = useModalStore((s) => s.modals)
   const setUser = useUserStore((s) => s.setUser)
   const closeModal = useModalStore((s) => s.closeModal)
@@ -36,7 +36,7 @@ export function SignupModal() {
     const { email, password } = payload
     
     try { 
-      const user = await signupUser({ email, password })
+      const user = await registerUser({ email, password })
 
       if (user) {
         const currentUser = await getCurrentUser()
@@ -53,7 +53,7 @@ export function SignupModal() {
   }
 
   return (
-    <GenericModal title="Signup" open={!!modals["signup"]} onOpenChange={() => closeModal("signup")}>
+    <GenericModal title="Register" open={!!modals["signup"]} onOpenChange={() => closeModal("signup")}>
       <Form {...form}>
         <Logo className="mt-6 flex size-24 w-full justify-center" />
         {form.formState.errors.root?.message && <p className="mt-6 w-full text-[14px] leading-tight tracking-tight text-red-400">{form.formState.errors.root?.message}</p>}
@@ -88,7 +88,7 @@ export function SignupModal() {
           disabled={form.formState.isSubmitting}
           isLoading={form.formState.isSubmitting}
         >
-          Submit
+          Register
         </Button>
       </DialogFooter>
     </GenericModal>

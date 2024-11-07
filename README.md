@@ -1,6 +1,6 @@
 # GenAI Study Task Starter Template
 
-## Get started
+## Manual Setup
 
 ### 1. Start Github Codespace
 
