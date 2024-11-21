@@ -8,15 +8,15 @@ const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<Platfo
   return null
 };
 
-const loginUser = async (req: Request, res: Response): Promise<void> => {
+const loginUser = async (input: PlatformUserCreateInput) => {
   // ToDo: Implement the loginUser function
   const user = {id: null} // replace this line
 
 
   // The following lines can be left unchanged because the output is expected to be a JWT token and an expiresAt value
-  const token = jwt.sign({ id: user?.id }, process.env.JWT_SECRET || "no_key_set" as string, { expiresIn: '1h' });
+  const accessToken = jwt.sign({ id: user?.id }, process.env.JWT_SECRET || "no_key_set" as string, { expiresIn: '1h' });
   const expiresAt = new Date(Date.now() + 3600 * 1000).toISOString(); // 3600 seconds = 1 hour
-  res.json({ token, expiresAt });
+  return { accessToken, expiresAt };
 };
 
 const getUser = async (accessToken: string): Promise<PlatformUser | undefined | null> => {

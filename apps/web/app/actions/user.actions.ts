@@ -17,6 +17,8 @@ export async function loginUser({ email, password }: { email: string; password: 
   return user
 }
 
+// For Task 1, you can leave the getCurrentUser() function below as it is. 
+// For Task 2, you need to adapt it.
 export async function getCurrentUser() {
   const accessToken = cookies().get(COOKIE_ACCESS_TOKEN)?.value
   const user = await storefrontClient.getUser(accessToken || "") // we should replace this with our client
@@ -24,7 +26,7 @@ export async function getCurrentUser() {
 }
 
 // disregard the updateUser function, someone else is working on it
-export async function updateUser(input: Pick<PlatformUserCreateInput, "firstName" | "lastName" | "phone">) {
+export async function updateUser(input: PlatformUserCreateInput) {
   const accessToken = cookies().get(COOKIE_ACCESS_TOKEN)?.value
 
   const user = await storefrontClient.updateUser(accessToken!, { ...input })

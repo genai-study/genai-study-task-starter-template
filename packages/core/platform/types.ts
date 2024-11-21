@@ -129,20 +129,12 @@ export interface PlatformPrice {
 }
 
 export interface PlatformUser {
-  acceptsMarketing: boolean
-  createdAt: string
-  updatedAt: string
-  displayName: string
-  email?: string | null | undefined
-  firstName?: string | null | undefined
-  lastName?: string | null | undefined
   id: string
-  phone?: string | null | undefined
-  tags: string[]
+  email?: string | null | undefined
   password?: string | null | undefined
 }
 
-export interface PlatformUserCreateInput extends Pick<PlatformUser, "email" | "firstName" | "lastName" | "phone"> {
+export interface PlatformUserCreateInput extends Pick<PlatformUser, "email"> {
   password: string
 }
 

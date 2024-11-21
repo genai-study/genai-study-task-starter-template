@@ -21,4 +21,4 @@
 
 ---
 
-<h3 style="text-align: center"><a href="./TASK_2.md">You can now move on to TASK 1 (click) ➡️</a></h3>
+<h3 style="text-align: center"><a href="./TASK_1.md">You can now move on to TASK 1 (click) ➡️</a></h3>
