@@ -6,7 +6,7 @@
 
 ✅ You are allowed to use the web (e.g., searching via Google, Stackoverflow, documentations ...)
 
-❌ **You are not allowed to use generative AI like ChatGPT**
+✅ You are allowed to use generative AI like ChatGPT
 
 ## Setting
 You are a Junior Developer in the web development startup ACME. One of your most popular products is an e-commerce application that you customize for online shops or retailers selling exclusive items such as rare collectables, designer fashion, art, and NFTs.
