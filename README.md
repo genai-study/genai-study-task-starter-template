@@ -29,20 +29,6 @@ $ yarn run dev
 A pop-up will show up as soon as the application is running. Click on `Open in browser` to open the live preview in a new tab. 
 Alternatively, you can open the live preview any time via the link provided in the VS Code tab `PORTS` which is usually located at the bottom of VS Code. The link looks something like this: "[https://didactic-pancake-69695gvr96crgpp-3000.app.github.dev](#)".
 
-## Tasks
-
-### Task 1: Adjust maximum amount of allowed columns for search results
-
-If you use the search bar in the application live preview (compiling can take a few seconds), the search results are displayed in a grid of maximum 3 columns. Adjust the maximum amount of allowed columns from 3 to 4.
-
-Hint: The respective file can be found at [`apps/web/views/Listing/HitsSection.tsx`](apps/web/views/Listing/HitsSection.tsx).
-
-### Task 2: ...
-
-### Task 3: ...
-
-
-
 ## 📜 License
 
 This project is licensed under the MIT License. For more information, see the [LICENSE](./LICENSE) file.
