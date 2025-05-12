@@ -77,4 +77,16 @@ You have to fulfill two tasks. You start with this task (implementing register f
 
 ---
 
+<br/>
+
+**Before moving on to the next task, fill out these 2 forms:** 
+
+1. [**Experience Questionnaire**: https://forms.office.com/e/xyTWzqV9n8](https://forms.office.com/e/xyTWzqV9n8)
+2. [**Task Questionnaire**: https://forms.office.com/e/rmQygJsRsz](https://forms.office.com/e/rmQygJsRsz)
+
+
+<br/>
+
+---
+
 <h3 style="text-align: center"><a href="./TASK_2.md">You can now move on to TASK 2 (click) ➡️</a></h3>

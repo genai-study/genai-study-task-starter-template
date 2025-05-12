@@ -60,4 +60,16 @@ Similarly to the registration functionality of Task 1, now implement the login f
 
 ---
 
+<br/>
+
+**Before ending the experiment, fill out these 2 forms:** 
+
+1. [**Experience Questionnaire 2**: https://forms.office.com/e/3cZktQ4Whq](https://forms.office.com/e/3cZktQ4Whq)
+2. [**Task 2 Questionnaire**: https://forms.office.com/e/ciTsGc2uUT](https://forms.office.com/e/ciTsGc2uUT)
+
+
+<br/>
+
+---
+
 <h3 style="text-align: center">You've completed the experiment. Thank you!</h3>
