@@ -1,4 +1,7 @@
 {
     "image":"mcr.microsoft.com/devcontainers/universal:2",
-    "postCreateCommand": "yarn install"
+    "postCreateCommand": "yarn install",
+    "extensions": [
+        "codelounge.tako"
+    ]
 }
