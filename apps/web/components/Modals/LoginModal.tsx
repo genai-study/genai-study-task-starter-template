@@ -36,9 +36,11 @@ export function LoginModal() {
     console.log(payload)
     const { email, password } = payload
     const user = await loginUser({ email, password })
-
+    console.log("user", user);
+    console.log("if not user", !user);
     if (user) {
       const currentUser = await getCurrentUser()
+      console.log("currentUser", await getCurrentUser());
       currentUser && setUser(currentUser)
 
       toast.success("Successfully logged in")
