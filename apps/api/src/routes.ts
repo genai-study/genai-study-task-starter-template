@@ -3,11 +3,14 @@ import { getProducts } from './controllers/products.controllers';
 import { getCategories } from './controllers/categories.controllers';
 import { protect } from './middleware/auth.middleware';
 import { findUserById } from './models/User';
+import { loginUser, registerUser } from './controllers/auth.controllers';
 
 const router = express.Router();
 
 router.get('/products', getProducts);
 router.get('/categories', getCategories);
+router.post("/register", registerUser)
+router.post("/login", loginUser)
 // ...
 
 // please disregard the lines below

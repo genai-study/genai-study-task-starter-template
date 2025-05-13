@@ -53,3 +53,17 @@ export interface Product {
   variants: Variant[];
   collections: Collection[];
 }
+
+export interface User {
+  id: number
+  acceptsMarketing?: Boolean
+  createdAt: Date
+  updatedAt: Date
+  displayName?: string
+  email: string
+  firstName?: string
+  lastName?: string
+  phone?: string
+  tags?: string
+  password: string
+}
