@@ -34,6 +34,7 @@ export function RegisterModal() {
 
   async function onSubmit(payload: z.infer<typeof formSchema>) {
     const { email, password } = payload
+    console.log("Payload", payload)
     
     try { 
       const user = await registerUser({ email, password })

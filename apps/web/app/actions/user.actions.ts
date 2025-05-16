@@ -7,7 +7,10 @@ import internalClient from "clients/internalClient"
 import { COOKIE_ACCESS_TOKEN } from "constants/index"
 
 export async function registerUser({ email, password }: { email: string; password: string }) {
-  const user = await storefrontClient.createUser({ email, password }) // todo: replace this with our client
+  console.log("Email", email, password)
+  console.log("Password", password)
+  const user = await internalClient.registerUser({ email, password })
+  console.log("internalClientUser", user)
   return user
 }
 
