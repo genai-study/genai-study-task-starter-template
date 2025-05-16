@@ -10,9 +10,10 @@ const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<Platfo
   return {id: registeredUser.id}
 };
 
-const loginUser = async (input: PlatformUserCreateInput) => {
-  // ToDo: Implement the loginUser function
-  const user = {id: null} // replace this line
+const loginUser = async (input: PlatformUserCreateInput): Promise<PlatformAccessToken> => {
+  
+  const user: PlatformUser = await axios.post(`http://localhost:3001/users/login`, input)
+
 
 
   // The following lines can be left unchanged because the output is expected to be a JWT token and an expiresAt value

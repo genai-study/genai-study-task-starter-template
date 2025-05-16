@@ -10,7 +10,8 @@ export const createUser = async(platformUser: PlatformUser): Promise<PlatformUse
 
   
   const execString =`INSERT INTO users(email, password) VALUES(?, ?)`
-  await db.run(execString, [platformUser.email, platformUser.password])
+  const hashedPw = await bcrypt.hash(platformUser.password, 10)
+  await db.run(execString, [platformUser.email, hashedPw])
 
   const exec2String = `SELECT * FROM users WHERE email == ?`
   const insertedUser =await db.get<PlatformUser>('SELECT * FROM users WHERE email = ?', platformUser.email);
@@ -19,6 +20,14 @@ export const createUser = async(platformUser: PlatformUser): Promise<PlatformUse
   return insertedUser
 
 } 
+
+export const findUserByEmail = async(email: string): Promise<PlatformUser> => {
+  const db = await openDb();
+  const exec2String = `SELECT * FROM users WHERE email == ?`
+  const user =await db.get<PlatformUser>('SELECT * FROM users WHERE email = ?', email);
+  
+  return user
+}
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();
