@@ -5,7 +5,39 @@ import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
 
-export const createUser = () => {} // Implement the createUser function
+export const createUser = async (
+  user: Omit<PlatformUser, 'id'>
+): Promise<Omit<PlatformUser, 'password'>> => {
+  const db = await openDb();
+
+  if (!user.email || !user.password) {
+    throw new Error("Email and password are required.");
+  }
+
+  // Check for existing email
+  const existingUser = await db.get('SELECT id FROM users WHERE email = ?', user.email);
+  if (existingUser) {
+    await db.close();
+    throw new Error('Email already in use');
+  }
+
+  const hashedPassword = await bcrypt.hash(user.password, 10);
+
+  const result = await db.run(
+    `INSERT INTO users (email, password) VALUES (?, ?)`,
+    user.email,
+    hashedPassword
+  );
+
+  const createdUser = await db.get<Omit<PlatformUser, 'password'>>(
+    'SELECT id, email FROM users WHERE id = ?',
+    result.lastID
+  );
+
+  await db.close();
+  return createdUser;
+};
+
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();

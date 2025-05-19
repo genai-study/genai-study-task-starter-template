@@ -3,9 +3,21 @@ import axios from 'axios';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
-const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<PlatformUser, "id"> | undefined | null> => {
-  // ToDo: Implement the registerUser function
-  return null
+const createUser = async (input: PlatformUserCreateInput): Promise<Pick<PlatformUser, "id">> => {
+  try {
+    const response = await axios.post('http://127.0.0.1:3001/register', input);
+    const { user } = response.data;
+
+    if (user && user.id) {
+      return { id: user.id };
+    }
+    throw new Error('User registration failed');
+  } catch (error: any) {
+    if (error.response && error.response.data && error.response.data.error) {
+      throw new Error(error.response.data.error);
+    }
+    throw error;
+  }
 };
 
 const loginUser = async (input: PlatformUserCreateInput) => {
@@ -40,7 +52,7 @@ const getUser = async (accessToken: string): Promise<PlatformUser | undefined | 
 };
 
 export default {
-  registerUser,
+  createUser,
   loginUser,
   getUser
 };
