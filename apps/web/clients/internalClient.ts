@@ -4,19 +4,30 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<PlatformUser, "id"> | undefined | null> => {
+    try {
+    const response = await axios.post('http://127.0.0.1:3001/register', input);
+    return response.data;
+  } catch (error) {
+    console.error('Error registering user:', error);
+    return null;
+  }
   // ToDo: Implement the registerUser function
-  return null
 };
 
 const loginUser = async (input: PlatformUserCreateInput) => {
-  // ToDo: Implement the loginUser function
-  const user = {id: null} // replace this line
-
+  try {
+    const response = await axios.post('http://127.0.0.1:3001/register', input);
+    return response.data;
+    // const accessToken = jwt.sign({ id: user?.id }, process.env.JWT_SECRET || "no_key_set" as string, { expiresIn: '1h' });
+    // const expiresAt = new Date(Date.now() + 3600 * 1000).toISOString(); // 3600 seconds = 1 hour
+    // return { accessToken, expiresAt };
+  } catch (error) {
+    console.error('Error logging in user:', error);
+    return null;
+  }
 
   // The following lines can be left unchanged because the output is expected to be a JWT token and an expiresAt value
-  const accessToken = jwt.sign({ id: user?.id }, process.env.JWT_SECRET || "no_key_set" as string, { expiresIn: '1h' });
-  const expiresAt = new Date(Date.now() + 3600 * 1000).toISOString(); // 3600 seconds = 1 hour
-  return { accessToken, expiresAt };
+  
 };
 
 const getUser = async (accessToken: string): Promise<PlatformUser | undefined | null> => {

@@ -5,7 +5,49 @@ import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
 
-export const createUser = () => {} // Implement the createUser function
+
+export const createUser = async (email: string, password: string): Promise<PlatformUser> => {
+  console.log('Creating user:', email);
+
+  if (!email || !password) {
+    throw new Error('Email and password are required.');
+  }
+
+  const db = await openDb();
+
+  const existingUser = await db.get<PlatformUser>('SELECT * FROM users WHERE email = ?', email);
+  console.log('Existing user found:', existingUser);
+  if (existingUser) {
+    throw new Error('User already exists.');
+  }
+
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const result = await db.run(
+    `INSERT INTO users (
+      email, password, createdAt, updatedAt
+    ) VALUES (?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`,
+    email,
+    passwordHash
+  );
+
+  // Get the newly inserted user
+  const newUser = await db.get<PlatformUser>('SELECT * FROM users WHERE id = ?', result.lastID);
+  await db.close();
+
+
+  return newUser!;
+} // Implement the createUser function
+
+export const loginUser = async (email: string, password: string) => {
+  if (!email || !password) {
+    throw new Error('Email and password are required.');
+  }
+
+  const db = await openDb();
+  const existingUser = await db.get<PlatformUser>('SELECT * FROM users WHERE email = ?', email);
+
+}
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();

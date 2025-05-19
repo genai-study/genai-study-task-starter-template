@@ -30,6 +30,10 @@ export function RegisterModal() {
   const closeModal = useModalStore((s) => s.closeModal)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+    email: '',
+    password: '',
+  },
   })
 
   async function onSubmit(payload: z.infer<typeof formSchema>) {
