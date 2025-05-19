@@ -6,7 +6,6 @@
 3. Wait several minutes for Codespaces to load and automatically configure itself:
 ![Screenshot Setup Step 3](./instruction_assets/1_setup_step_3.png)
 
-
 4. After the installation finishes (takes several minutes), open the codespace in your local VS Code program. This step is important (!), because only then can you use localhost addresses:
 <img src="./instruction_assets/2_setup_step_4.png" width=400 />
 
