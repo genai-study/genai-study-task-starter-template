@@ -5,7 +5,21 @@ import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
 
-export const createUser = () => {} // Implement the createUser function
+export const createUser = async (newUser: PlatformUser) => {
+  try {
+    // If user already exists throw an error?
+    const db = await openDb();
+    await db.exec('CREATE TABLE users (id, email, password)'); // This is for the table is sent for creation but I dont know how to add more than one column
+    await db.exec('INSERT INTO users(id, email, password) VALUES (:newUser)' (':newUser': newUser));
+    await db.close();
+  }
+  catch {
+    // If things break
+    console.log("Stuff broke at crating a user, task1 failed:(((")
+  }
+  return { message: "user Created Successfully" };
+
+} // Struggling  :D:DDDD
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();

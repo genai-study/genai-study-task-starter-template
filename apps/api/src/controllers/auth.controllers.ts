@@ -10,7 +10,6 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     email,
     password
   };
-
-  // please finish this function
-
+  // The init already takes care of duplicates
+  createUser(newUser);
 };
