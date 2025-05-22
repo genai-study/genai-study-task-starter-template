@@ -130,8 +130,8 @@ export interface PlatformPrice {
 
 export interface PlatformUser {
   id: string
-  email?: string | null | undefined
-  password?: string | null | undefined
+  email?: string | undefined
+  password?: string | undefined
 }
 
 export interface PlatformUserCreateInput extends Pick<PlatformUser, "email"> {

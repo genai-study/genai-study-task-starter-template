@@ -3,9 +3,18 @@ import axios from 'axios';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
+
+
+
+
+
 const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<PlatformUser, "id"> | undefined | null> => {
   // ToDo: Implement the registerUser function
-  return null
+  const email = input.email;
+  const password = input.password;
+  const user = await axios.post('http://localhost:3001/register', {
+  body: {email:email, password:password},});
+  return user;
 };
 
 const loginUser = async (input: PlatformUserCreateInput) => {
