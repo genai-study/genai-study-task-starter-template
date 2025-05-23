@@ -3,5 +3,6 @@
     "postCreateCommand": "yarn install",
     "extensions": [
         "codelounge.tako"
-    ]
+    ],
+    "hostRequirements": { "cpus": 8, "memory": "32gb", "storage": "64gb" }
 }
