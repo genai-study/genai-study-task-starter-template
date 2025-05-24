@@ -5,7 +5,18 @@ import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
 
-export const createUser = () => {} // Implement the createUser function
+// Implement the createUser function
+export const createUser = async(newUser: PlatformUser): Promise<PlatformUser | null> => {
+  try {
+    const {email, password} = newUser
+    const db = await openDb();
+    const insertCreatedUser = await db.run('INSERT INTO users(email, password) VALUES(?, ?)', [email, password])
+    const createdUser:PlatformUser = {id: null, ...insertCreatedUser}
+    return createdUser || null;
+  } catch (error) {
+    console.error('Error at: ', error)
+  }
+} 
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();
