@@ -2,7 +2,8 @@
     "image":"mcr.microsoft.com/devcontainers/universal:2",
     "postCreateCommand": "yarn install",
     "extensions": [
-        "codelounge.tako"
+        "codelounge.tako",
+        "educational-technology-collective.telemetry"
     ],
     "hostRequirements": { "cpus": 8, "memory": "32gb", "storage": "64gb" }
 }
