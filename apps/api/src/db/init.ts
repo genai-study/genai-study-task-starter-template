@@ -106,7 +106,7 @@ async function initializeDb(force: boolean = false) {
     )`);
     
     await db.exec(`CREATE TABLE IF NOT EXISTS users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+ 
       acceptsMarketing BOOLEAN,
       createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
