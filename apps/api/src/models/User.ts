@@ -4,8 +4,37 @@ import path from 'path';
 import bcrypt from 'bcryptjs';
 import { PlatformUser } from "@enterprise-commerce/core/platform/types"
 import openDb from '../db/db';
+import { userAgent } from 'next/server';
 
-export const createUser = () => {} // Implement the createUser function
+export const createUser = async (
+  email?: string, 
+  password?: string
+): Promise<PlatformUser> =>  {
+  try {
+    const db = await openDb();
+    console.log("Inserting user with:", email, password);
+
+    const result = await db.run(
+      'INSERT INTO users (email, password) VALUES (?, ?)',
+      [email ?? null, password ?? null]
+    );
+
+    const id = result.lastID;
+    await db.close();
+
+    console.log("User created with ID:", id);
+
+    return {
+      id: String(id),
+      email: email ?? null,
+      password: password ?? null
+    };
+  } catch (err) {
+    console.error("createUser error:", err);
+    throw err;
+  }
+};
+
 
 export const findUserById = async (id: string): Promise<PlatformUser | null> => {
   const db = await openDb();
