@@ -9,7 +9,7 @@
     "scminput": false
   },
   "tako.dataRecordingConsent": "Enable",
-  "telemetry.exporters": [
+  "activity-tracker.exporters": [
     {
       "type": "file_exporter",
       "args": {
@@ -18,7 +18,7 @@
       }
     }
   ],
-  "telemetry.activeEvents": [
+  "activity-tracker.activeEvents": [
     {
       "name": "DocumentOpenEvent",
       "logWholeDocument": false

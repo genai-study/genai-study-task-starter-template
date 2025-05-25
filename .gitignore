@@ -54,3 +54,7 @@ apps/docs/.vitepress/dist/
 
 # DB
 *.db
+
+
+# Telemetry Logs
+telemetry.log

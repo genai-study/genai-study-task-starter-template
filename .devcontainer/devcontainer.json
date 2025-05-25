@@ -1,9 +1,12 @@
 {
     "image":"mcr.microsoft.com/devcontainers/universal:2",
-    "postCreateCommand": "yarn install",
+    "postCreateCommand": [
+        "code --install-extension .devcontainer/vscode-activity-tracker.vsix",
+        "yarn install"
+    ],
     "extensions": [
         "codelounge.tako",
-        "educational-technology-collective.telemetry"
+        // "educational-technology-collective.telemetry"
     ],
     "hostRequirements": { "cpus": 8, "memory": "32gb", "storage": "64gb" }
 }
